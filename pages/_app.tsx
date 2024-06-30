@@ -1,6 +1,15 @@
-import "@/styles/globals.css";
+import '@/styles/globals.css'
+import { PlasmicRootProvider } from "@plasmicapp/react-web";
+import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from "next/app";
+import Head from "next/head";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <PlasmicRootProvider Head={Head}>
+      <Component {...pageProps} />
+    </PlasmicRootProvider>
+  );
 }
+
+export default appWithTranslation(MyApp)
